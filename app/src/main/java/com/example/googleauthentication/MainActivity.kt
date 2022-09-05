@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     val Req_Code: Int = 123
     private lateinit var firebaseAuth: FirebaseAuth
 
+    private val auth by lazy {
+        FirebaseAuth.getInstance()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -76,10 +80,8 @@ class MainActivity : AppCompatActivity() {
             if (task.isSuccessful) {
 //                SavedPreference.setEmail(this, account.email.toString())
 //                SavedPreference.setUsername(this, account.displayName.toString())
-                val intent = Intent(this, Dashboard::class.java)
-                startActivity(intent)
-                finish()
-            }
+                sign_in.visibility = View.GONE
+              }
         }
     }
 
@@ -95,4 +97,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
 }
