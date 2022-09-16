@@ -1,10 +1,11 @@
 package com.example.googleauthentication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -29,6 +30,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val signInAccount = GoogleSignIn.getLastSignedInAccount(this)
+        if (signInAccount != null) {
+            textVIew.text = auth.uid.toString()
+            text.text = signInAccount.email.toString()
+//            Log.d("return",signInAccount.displayName.toString())
+//            name.setText(signInAccount.displayName)
+//            mail.setText(signInAccount.email)
+        }
 
 
         FirebaseApp.initializeApp(this)
@@ -69,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                 UpdateUI(account)
             }
         } catch (e: ApiException) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -88,15 +98,8 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (GoogleSignIn.getLastSignedInAccount(this) != null) {
-            startActivity(
-                Intent(
-                    this, Dashboard
-                    ::class.java
-                )
-            )
-            finish()
+            sign_in.visibility = View.GONE
+//            finish()
         }
     }
-
-
 }

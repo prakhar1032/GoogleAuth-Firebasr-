@@ -14,15 +14,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#70E1DDDD"
-        android:alpha="0.5" />
+        android:alpha="1.7" />
     <TextView
+        android:id="@+id/textVIew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="KYB"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:gravity="center_horizontal"
-        android:layout_margin="80dp"
-        android:textSize="50dp"/>
+        android:layout_margin="20dp"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textVIew"
+        android:text="KYB"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:textSize="15dp"/>
+
 
 
 <!--    <com.google.android.gms.common.SignInButton-->
